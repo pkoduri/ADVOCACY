@@ -1,0 +1,16 @@
+{
+  "name": "zenflow-physician-education",
+  "version": "1.0.0",
+  "description": "Zenflow Spring System Physician Education Platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve -s . -l 3000",
+    "build": "echo 'No build process needed for static site'"
+  },
+  "dependencies": {
+    "serve": "^14.0.0"
+  },
+  "keywords": ["zenflow", "bph", "physician-education", "medical"],
+  "author": "Zenflow Medical",
+  "license": "MIT"
+}

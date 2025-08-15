@@ -1,0 +1,1083 @@
+
+
+    <!-- Excellence Modal -->
+    <div id="excellenceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('excellence')">&times;</span>
+            <h2>Centers of Excellence Application</h2>
+            <p>Join our elite recognition program for physicians demonstrating exceptional Spring System outcomes and expertise.</p>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Physician Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Institution/Practice Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-input" placeholder="Total Spring System procedures performed" min="0" required>
+                </div>
+                <div class="form-group">
+                    <select class="form-input" required>
+                        <option value="">Current Spring System experience level</option>
+                        <option>New to Spring System (&lt;10 procedures)</option>
+                        <option>Experienced (10-25 procedures)</option>
+                        <option>High-volume (&gt;25 procedures)</option>
+                        <option>Expert/KOL (&gt;50 procedures)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-input" placeholder="Describe your Spring System outcomes and quality metrics" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-input" placeholder="Describe your educational contributions to Spring System advancement" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Excellence Application</button>
+            </form>
+        </div>
+    </div><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenflow Physician Education & Advocacy Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c5aa0;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #2c5aa0;
+        }
+
+        .hero {
+            padding: 140px 0 100px;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a365d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #90cdf4;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #2c5aa0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            background: #f7fafc;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #2c5aa0;
+        }
+
+        .main-content {
+            background: white;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #2d3748;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #718096;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(44, 90, 160, 0.1);
+            border-color: #90cdf4;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2c5aa0, #1a365d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #718096;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .stats {
+            background: #2c5aa0;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .stats h2 {
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #90cdf4;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .training-section {
+            background: #f7fafc;
+        }
+
+        .training-tracks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .track-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2c5aa0, #1a365d);
+        }
+
+        .track-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(44, 90, 160, 0.15);
+        }
+
+        .track-level {
+            background: linear-gradient(135deg, #2c5aa0, #1a365d);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .track-card h3 {
+            font-size: 1.6rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .track-card p {
+            color: #718096;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .track-card ul {
+            text-align: left;
+            color: #4a5568;
+        }
+
+        .track-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .resource-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(44, 90, 160, 0.15);
+        }
+
+        .resource-header {
+            background: linear-gradient(135deg, #2c5aa0, #1a365d);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .resource-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .resource-content {
+            padding: 2rem;
+        }
+
+        .resource-content p {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .advocacy-tools {
+            background: #f7fafc;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .tool-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tool-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(44, 90, 160, 0.15);
+        }
+
+        .tool-item h3 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .tool-item p {
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        .newsletter {
+            background: linear-gradient(135deg, #2c5aa0, #1a365d);
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 280px;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(144, 205, 244, 0.5);
+        }
+
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 600px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #a0aec0;
+            font-weight: 300;
+        }
+
+        .close:hover {
+            color: #2c5aa0;
+        }
+
+        .modal h2 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .modal p {
+            color: #718096;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #2c5aa0;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+
+        .zenflow-badge {
+            background: linear-gradient(135deg, #2c5aa0, #1a365d);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .newsletter-input {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .spring-highlight {
+            color: #2c5aa0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Zenflow</div>
+            <ul class="nav-links">
+                <li><a href="#education">Education</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#advocacy">Advocacy</a></li>
+                <li><a href="#excellence">Centers of Excellence</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="zenflow-badge">Spring System Clinical Education</div>
+            <div class="subtitle">Ready to Transform BPH Care?</div>
+            <h1>Master the Future of<br>Minimally Invasive BPH Treatment</h1>
+            <p>Join the elite community of urologists delivering <strong>46% IPSS improvement</strong> with <strong>zero sexual dysfunction</strong> using the revolutionary <span class="spring-highlight">Zenflow Spring System</span>. Get trained. Get certified. Get exceptional outcomes.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary" onclick="openModal('register')">Get Spring System Certified</a>
+                <a href="#" class="btn btn-secondary" onclick="openModal('demo')">Watch Training Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Comprehensive Spring System Education</h2>
+                <p class="section-subtitle animate-on-scroll">Building expertise in minimally invasive BPH treatment with evidence-based learning</p>
+                <div class="features">
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🎓</div>
+                        <h3>Clinical Evidence Hub</h3>
+                        <p>Access peer-reviewed BREEZE trial data (205-patient RCT), ZEST pilot study outcomes, and evidence-based treatment protocols for the Spring System. Clinical studies demonstrate 46% IPSS improvement at 1 year with sustained relief through 3 years and zero sexual dysfunction.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">📚</div>
+                        <h3>Interactive Case Studies</h3>
+                        <p>Engage with real-world patient scenarios and Spring System treatment decision trees. Learn from expert urologist commentary and peer discussions on optimal patient selection and procedural techniques.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🔬</div>
+                        <h3>Spring System Integration</h3>
+                        <p>Master the revolutionary nitinol coil technology that gently props open the urethra. Understand implementation strategies, patient selection criteria, and post-procedure management for optimal outcomes.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🏥</div>
+                        <h3>Spring System Centers of Excellence</h3>
+                        <p>Join our elite recognition program that celebrates skill and exceptional outcomes with the Spring System. Achieve excellence benchmarks in patient outcomes, safety metrics, and utilization to earn designation as a Zenflow Center of Excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <h2>Making an Impact with Spring System</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="205">0</div>
+                        <div class="stat-label">Patients in BREEZE RCT</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="46">0</div>
+                        <div class="stat-label">% IPSS Improvement (ZEST Study)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="0">0</div>
+                        <div class="stat-label">Sexual Dysfunction Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="3">0</div>
+                        <div class="stat-label">Years of Sustained Relief</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="training" class="section training-section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Structured Spring System Training</h2>
+                <p class="section-subtitle animate-on-scroll">High-commitment, high-quality training programs following proven medical device education models</p>
+                <div class="training-tracks">
+                    <div class="track-card animate-on-scroll">
+                        <div class="track-level">Foundation</div>
+                        <h3>BPH & Spring System Fundamentals</h3>
+                        <p>Essential knowledge for urologists new to the Spring System. Covers patient selection, procedural overview, and safety protocols based on BREEZE trial outcomes.</p>
+                        <ul>
+                            <li>Spring System mechanism of action</li>
+                            <li>Patient assessment and selection criteria</li>
+                            <li>Safety protocols and contraindications</li>
+                            <li>Expected outcomes and patient counseling</li>
+                        </ul>
+                    </div>
+                    <div class="track-card animate-on-scroll">
+                        <div class="track-level">Certification</div>
+                        <h3>Hands-On Procedural Training</h3>
+                        <p>Advanced hands-on training with proctored cases, simulation, and expert mentorship. Master the gentle nitinol coil placement technique with zero tissue cutting or burning.</p>
+                        <ul>
+                            <li>Live case observation requirements</li>
+                            <li>Simulation and cadaver training</li>
+                            <li>Proctored first cases supervision</li>
+                            <li>Troubleshooting and complications management</li>
+                        </ul>
+                    </div>
+                    <div class="track-card animate-on-scroll">
+                        <div class="track-level">Expert</div>
+                        <h3>Clinical Leadership & Research</h3>
+                        <p>Develop expertise in Spring System research, clinical trial participation, and physician education leadership. Become a regional advocate and trainer.</p>
+                        <ul>
+                            <li>Clinical research methodology</li>
+                            <li>Multi-center study participation</li>
+                            <li>Physician training and mentorship</li>
+                            <li>Spring System advocacy and education</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Spring System Resource Library</h2>
+                <p class="section-subtitle animate-on-scroll">Complete clinical and patient education materials for Spring System implementation</p>
+                <div class="resources-grid">
+                    <div class="resource-card animate-on-scroll">
+                        <div class="resource-header">
+                            <h3>📋 Clinical Guidelines & Protocols</h3>
+                        </div>
+                        <div class="resource-content">
+                            <p>Evidence-based Spring System treatment protocols, patient selection guidelines, and procedural best practices derived from BREEZE trial data and expert consensus.</p>
+                            <a href="#" class="btn btn-primary">Access Guidelines</a>
+                        </div>
+                    </div>
+                    <div class="resource-card animate-on-scroll">
+                        <div class="resource-header">
+                            <h3>📊 Patient Education Materials</h3>
+                        </div>
+                        <div class="resource-content">
+                            <p>Comprehensive patient education toolkit including brochures, infographics, and videos explaining the gentle Spring System procedure and fast recovery benefits.</p>
+                            <a href="#" class="btn btn-primary">Download Materials</a>
+                        </div>
+                    </div>
+                    <div class="resource-card animate-on-scroll">
+                        <div class="resource-header">
+                            <h3>🎥 Procedural Training Videos</h3>
+                        </div>
+                        <div class="resource-content">
+                            <p>Step-by-step Spring System procedural demonstrations, nitinol coil placement techniques, and device operation tutorials from expert urologists.</p>
+                            <a href="#" class="btn btn-primary">Watch Videos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advocacy" class="section advocacy-tools">
+            <div class="container">
+                <h2 class="animate-on-scroll">Spring System Advocacy Tools</h2>
+                <p class="section-subtitle animate-on-scroll">Advancing minimally invasive BPH treatment through physician advocacy and professional collaboration</p>
+                <div class="tool-grid">
+                    <div class="tool-item animate-on-scroll">
+                        <h3>🏛️ Policy & Reimbursement Advocacy</h3>
+                        <p>Tools and resources to advocate for Spring System coverage policies and improved patient access to gentle, effective BPH treatment options.</p>
+                    </div>
+                    <div class="tool-item animate-on-scroll">
+                        <h3>📢 Professional Networking</h3>
+                        <p>Connect with fellow Spring System practitioners, share clinical experiences, and collaborate on advancing minimally invasive BPH treatment standards.</p>
+                    </div>
+                    <div class="tool-item animate-on-scroll">
+                        <h3>📈 Clinical Research Collaboration</h3>
+                        <p>Participate in post-market Spring System studies, contribute real-world evidence, and advance the clinical understanding of nitinol coil therapy.</p>
+                    </div>
+                    <div class="tool-item animate-on-scroll">
+                        <h3>💡 Innovation & Development</h3>
+                        <p>Collaborate with Zenflow on product innovations and next-generation Spring System developments through physician advisory boards and feedback programs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <section id="excellence" class="section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Zenflow Centers of Excellence Program</h2>
+                <p class="section-subtitle animate-on-scroll">Recognition program for physicians demonstrating exceptional Spring System outcomes and expertise</p>
+                
+                <div class="excellence-content" style="margin-top: 4rem;">
+                    <div class="excellence-hero" style="background: linear-gradient(135deg, #2c5aa0, #1a365d); color: white; padding: 3rem; border-radius: 12px; text-align: center; margin-bottom: 3rem;">
+                        <h3 style="font-size: 2rem; margin-bottom: 1rem; color: white;">Excellence. Recognized.</h3>
+                        <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">Join an elite group of urologists who have demonstrated exceptional skill, safety, and patient outcomes with the Spring System. Centers of Excellence represent the highest standard of Spring System care.</p>
+                    </div>
+                    
+                    <div class="excellence-criteria" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                        <div class="criteria-card animate-on-scroll" style="background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2c5aa0, #1a365d); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: white; font-size: 1.5rem;">📊</div>
+                            <h4 style="color: #2d3748; margin-bottom: 1rem; font-size: 1.3rem;">Clinical Excellence</h4>
+                            <ul style="color: #718096; line-height: 1.6;">
+                                <li>Minimum 25 Spring System procedures</li>
+                                <li>&lt;2% complication rate</li>
+                                <li>Patient satisfaction scores &gt;90%</li>
+                                <li>Sustained IPSS improvements &gt;40%</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="criteria-card animate-on-scroll" style="background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2c5aa0, #1a365d); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: white; font-size: 1.5rem;">🎓</div>
+                            <h4 style="color: #2d3748; margin-bottom: 1rem; font-size: 1.3rem;">Education Leadership</h4>
+                            <ul style="color: #718096; line-height: 1.6;">
+                                <li>Active participation in Spring System training</li>
+                                <li>Mentorship of new Spring System users</li>
+                                <li>Conference presentations or publications</li>
+                                <li>Commitment to advancing minimally invasive BPH care</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="criteria-card animate-on-scroll" style="background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2c5aa0, #1a365d); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: white; font-size: 1.5rem;">🏆</div>
+                            <h4 style="color: #2d3748; margin-bottom: 1rem; font-size: 1.3rem;">Recognition Benefits</h4>
+                            <ul style="color: #718096; line-height: 1.6;">
+                                <li>Official Center of Excellence designation</li>
+                                <li>Marketing support and co-branding opportunities</li>
+                                <li>Priority access to new Spring System innovations</li>
+                                <li>Advisory board participation opportunities</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="excellence-cta" style="text-align: center; background: #f7fafc; padding: 3rem; border-radius: 12px;">
+                        <h3 style="color: #2d3748; margin-bottom: 1rem; font-size: 1.8rem;">Ready to Pursue Excellence?</h3>
+                        <p style="color: #718096; margin-bottom: 2rem; font-size: 1.1rem;">Learn more about our Centers of Excellence criteria and application process</p>
+                        <div style="margin-bottom: 2rem;">
+                            <a href="#" class="btn btn-primary" onclick="openModal('excellence')">Apply for Centers of Excellence</a>
+                        </div>
+                        
+                        <div style="border-top: 1px solid #e2e8f0; padding-top: 2rem; margin-top: 2rem;">
+                            <h4 style="color: #2d3748; margin-bottom: 1rem; font-size: 1.2rem;">Stay Updated on Spring System Advances</h4>
+                            <p style="color: #718096; margin-bottom: 1.5rem;">Get the latest clinical data, training opportunities, and program updates</p>
+                            <form class="newsletter-form" style="max-width: 400px; margin: 0 auto;">
+                                <input type="email" class="newsletter-input" placeholder="Enter your email address" required style="margin-bottom: 1rem; background: white;">
+                                <button type="submit" class="btn" style="background: #2c5aa0; color: white; border: none;">Subscribe to Updates</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Zenflow, Inc. Advancing BPH treatment through gentle, effective innovation.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('register')">&times;</span>
+            <h2>Start Your Spring System Learning Journey</h2>
+            <p>Join leading urologists advancing their BPH treatment capabilities with evidence-based Spring System education.</p>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <select class="form-input" required>
+                        <option value="">Select Your Institution Type</option>
+                        <option>Academic Medical Center</option>
+                        <option>Community Hospital</option>
+                        <option>Ambulatory Surgery Center</option>
+                        <option>Private Practice</option>
+                        <option>Multi-specialty Group</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-input" placeholder="Annual BPH procedures performed" min="0">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Begin Spring System Education</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('demo')">&times;</span>
+            <h2>Request Spring System Training Demo</h2>
+            <p>Experience our comprehensive Spring System training platform and see how it can enhance your BPH treatment capabilities.</p>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Institution Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-input" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-input" placeholder="Tell us about your BPH program and Spring System interests" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Schedule Training Demo</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animated counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / 200;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(() => animateCounters(), 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger counter animation when stats section comes into view
+                    if (entry.target.querySelector('.stat-number')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Modal functions
+        function openModal(modalType) {
+            document.getElementById(modalType + 'Modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalType) {
+            document.getElementById(modalType + 'Modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert('Thank you for subscribing! We\'ll keep you updated with the latest Spring System advances and training opportunities.');
+            this.reset();
+        });
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (this.closest('.modal')) {
+                    const modalType = this.closest('#registerModal') ? 'training program' : 'demo request';
+                    alert(`Thank you for your ${modalType} submission! Our Spring System education team will contact you within 24 hours to discuss next steps.`);
+                    this.closest('.modal').style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Add some interactive hover effects for the Spring System branding
+        document.querySelectorAll('.spring-highlight').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.color = '#1a365d';
+                this.style.transition = 'color 0.3s ease';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.color = '#2c5aa0';
+            });
+        });
+
+        // Zenflow badge animation
+        const badge = document.querySelector('.zenflow-badge');
+        if (badge) {
+            badge.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            badge.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+    </script>
+</body>
+</html>
